@@ -7,7 +7,7 @@ package interview;
  * There have a two-dimensional array, the first element is each row is the meeting start time
  * the second element is the meeting end time.
  * e.g. times[2][]={{10, 11}, {10, 12}}
- * Give a times array, how to find the time sector who have the most overlap with others
+ * Give a times array, how to find the max number of meeting that execute at the same times
  */
 
 public class FindMaxOverlapTime {
@@ -22,20 +22,17 @@ public class FindMaxOverlapTime {
             for (int j = 0; j < i; j++) {
                 if (times[i][0] <= times[j][0] && times[i][1] >= times[j][0]
                         || times[i][0] <= times[j][1] && times[i][1] >= times[j][1]) {
-                    result[i]++;
+                    result[j]++;
                 }
             }
         }
         int maxOne = result[0];
-        int maxIndex = 0;
         for(int i = 1; i < result.length; i++){
             if(result[i] > maxOne){
                 maxOne = result[i];
-                maxIndex = i;
             }
         }
-        System.out.println("max overlap time is " + times[maxIndex][0] + " to "
-                + times[maxIndex][1] + ". It appear " + maxOne + " times");
+        System.out.println("there have " + maxOne + " meeting on the same times");
     }
 
     private static double[][] initialTimes() {

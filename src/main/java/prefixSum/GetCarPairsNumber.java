@@ -18,7 +18,6 @@ public class GetCarPairsNumber {
         int sum = 0;
         for(int i = a.length - 1; i >= 0; i--){
             if(a[i] == 1){
-                a[i] = 0;
                 numberOneBehindZero++;
             }
             else{

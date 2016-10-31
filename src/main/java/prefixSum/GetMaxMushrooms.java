@@ -22,7 +22,7 @@ public class GetMaxMushrooms {
         int start = 4;
         int moves = 6;
 
-
+        System.out.println(Integer.MAX_VALUE);
         for(int i = 1; i < a.length; i++){
             a[i] += a[i-1];
         }

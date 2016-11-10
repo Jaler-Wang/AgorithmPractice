@@ -1,6 +1,8 @@
 package sort;
 
 
+import sort.basic.HeapSort;
+
 /**
  * Created by Jaler on 11/8/2016.
  */
@@ -15,12 +17,10 @@ public class GetMaxProductOfTriplet {
         if(array == null || array.length < 3){
             return -1;
         }
-//        quickSort(array, );
-        return -1;
-    }
-
-    private static void quickSort(int[] array) {
-
+        new HeapSort().heapSort(array);
+        int max1 = array[0]*array[1]*array[array.length - 1];
+        int max2 = array[array.length - 1] * array[array.length - 2] * array[array.length - 3];
+        return max1 > max2? max1 : max2;
     }
 
 }

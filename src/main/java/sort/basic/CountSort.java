@@ -4,6 +4,8 @@ import org.junit.Test;
 
 /**
  * Created by Jaler on 11/12/2016.
+ * since count sort used for the max number is specific.
+ * for the number is every bit is [0-9] for any integer, so it can be used to do radix sort
  */
 public class CountSort {
     @Test

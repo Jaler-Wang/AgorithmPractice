@@ -3,6 +3,8 @@ package select;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Queue;
+
 /**
  * Created by U0148394 on 11/12/2016.
  */
@@ -13,6 +15,7 @@ public class RandomizedSelect {
         int result = getTheISmallestElement(data, 0, data.length - 1, 2);
         System.out.println(result);
         Assert.assertEquals(4, result);
+        Queue queue;
     }
     public int getTheISmallestElement(int[] data, int start, int end, int i) {
         if (start == end) {

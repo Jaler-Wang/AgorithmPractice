@@ -35,6 +35,6 @@ public class GetMaxMushrooms {
                 max = sum;
             }
         }
-        System.out.println("max mushromm he can get is " + max);
+        System.out.println("max mushroom he can get is " + max);
     }
 }

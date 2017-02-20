@@ -1,6 +1,5 @@
 package useful.leetcode;
 
-import java.util.LinkedHashMap;
 import java.util.Random;
 
 /**
@@ -14,10 +13,6 @@ public class LongestPalindromicSubString {
     private int startIndex = 0;
     private int length = 0;
     public String longestPalindrome(String s) {
-        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
-        map.put(1,1);
-        Integer.MAX_VALUE;
-        map.remove(1);
         int random = new Random().nextInt(10);
 
         if(s == null || s.length() == 1) return s;

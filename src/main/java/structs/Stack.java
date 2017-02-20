@@ -1,5 +1,7 @@
 package structs;
 
+import java.util.PriorityQueue;
+
 /**
  * Created by U0148394 on 11/14/2016.
  */
@@ -8,6 +10,7 @@ public class Stack {
     private int top = -1;
     public Stack(int size){
         array = new int[size];
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<Integer>();
     }
 
     public boolean isEmpty(){

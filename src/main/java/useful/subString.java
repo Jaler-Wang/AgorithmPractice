@@ -19,6 +19,7 @@ public class subString {
         List<Integer> result = new ArrayList<Integer>();
         int startIndex = 0;
         int endIndex = 0;
+
         int count = 0;
         int[] pattern = new int[258];
         for(int i = 0; i < pattern.length; i++){

@@ -1,4 +1,4 @@
-package useful.leetcode.google;
+package useful.leetcode.amazon;
 
 import org.junit.Test;
 

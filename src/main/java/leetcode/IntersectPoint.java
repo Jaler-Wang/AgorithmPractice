@@ -1,4 +1,4 @@
-package useful.leetcode;
+package leetcode;
 import org.junit.Test;
 /**
  * Created by U0148394 -Jianle.Wang on 2/13/2017.

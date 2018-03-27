@@ -1,9 +1,6 @@
-package useful.leetcode.amazon;
+package leetcode.amazon;
 
 import org.junit.Test;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Administrator on 2017/3/12 0012.

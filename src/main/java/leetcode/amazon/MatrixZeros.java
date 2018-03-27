@@ -1,7 +1,4 @@
-package useful.leetcode.amazon;
-
-import java.util.HashSet;
-import java.util.Set;
+package leetcode.amazon;
 
 /**
  * Created by Administrator on 2017/3/11 0011.

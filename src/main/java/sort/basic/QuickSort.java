@@ -2,38 +2,34 @@ package sort.basic;
 
 import org.junit.Test;
 
-/**
- * Created by U0148394 on 11/11/2016.
- */
 public class QuickSort {
-    public void sort(int[] data, int start, int end) {
+    public void quickSort(int[] data, int start, int end) {
         if (start >= end) return;
-        int mid = divide(data, start, end);
-        sort(data, start, mid - 1);
-        sort(data, mid + 1, end);
-
+        int pivot = partition(data, start, end);
+        quickSort(data, start, pivot - 1);
+        quickSort(data, pivot + 1, end);
     }
 
-    private int divide(int[] data, int start, int end) {
-        int temp = data[end];
-        int midIndex = start - 1;
-        for (int i = start; i < end; i++) {
-            if (data[i] <= temp) {
-                midIndex++;
-                int d = data[midIndex];
-                data[midIndex] = data[i];
-                data[i] = d;
+    private int partition(int[] data, int start, int end) {
+        int pivot = data[end];
+        int index = start;
+        for(int i = start; i <= end - 1; i++){
+            if(data[i] <= pivot){
+                int temp = data[i];
+                data[i] = data[index];
+                data[index] = temp;
+                index++;
             }
         }
-        data[end] = data[midIndex + 1];
-        data[midIndex + 1] = temp;
-        return midIndex + 1;
+        data[end] = data[index];
+        data[index] = pivot;
+        return index;
     }
 
     @Test
     public void quickSortTest() {
-        int[] data = new int[]{2, 1, 3, 8, 7, 5, 6, 4};
-        sort(data, 0, data.length - 1);
+        int[] data = new int[]{8,10,2,3,6,1,5};
+        quickSort(data, 0, data.length - 1);
         output(data);
     }
 
@@ -43,5 +39,4 @@ public class QuickSort {
         }
         System.out.println();
     }
-
 }

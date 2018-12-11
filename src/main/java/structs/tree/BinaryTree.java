@@ -1,11 +1,7 @@
 package structs.tree;
 
-import org.junit.Test;
-
-/**
- * Created by U0148394 on 11/19/2016.
- */
 public class BinaryTree {
+    private Element tree;
     public static void inorderTreeWalk(Element root) {
         if (root != null) {
             inorderTreeWalk(root.left);
@@ -71,66 +67,81 @@ public class BinaryTree {
     /*
     * find the postion current that the new data should be inserted into, then set the data's root to this postion's parent
     * */
-    public static void insert(Element root, Element data) {
-        Element current = root;
-        Element parent = null;
-        while (current != null) {
-            parent = current;
-            if (current.key >= data.key) {
-                current = current.left;
-            } else {
-                current = current.right;
+    public  void insert(Element data) {
+        if(tree == null){
+            tree = data;
+        }
+        Element current = tree;
+        while(current != null){
+            if(current.key > data.key){
+                if(current.left == null){
+                    current.left = data;
+                }
+                else{
+                    current = current.left;
+                }
             }
-        }
-        data.parent = parent;
-        if (parent == null) {
-            root = data;
-        }
-        if (data.key > parent.key) {
-            parent.right = data;
-        } else {
-            parent.left = data;
+            else{
+                if(current.right == null){
+                    current.right = data;
+                }
+                else{
+                    current = current.right;
+                }
+            }
         }
     }
 
-    public static void delete(Element root, int data) {
-        Element element = treeSearch(root, data);
-        if (element == null) {
-            return;
-        }
-        if (element.left == null) {
-            transplant(root, element, element.right);
-        } else if (element.right == null) {
-            transplant(root, element, element.left);
-        } else {
-            Element newOne = min(element.right);
-            if(newOne.parent != element){
-                transplant(root, newOne, newOne.right);
+    public void delete(int data) {
+        Element node = tree;
+        while(node != null){
+            if(node.key == data){
+                break;
             }
-            newOne.right = element.right;
-            newOne.right.parent = newOne;
-            transplant(root, element, newOne);
-            newOne.left = element.left;
-            newOne.left.parent = newOne;
+            if(node.key < data){
+                node = node.right;
+            }
+            else{
+                node = node.left;
+            }
         }
+        if(node == null) return;
+
+        if(node.left != null && node.right != null){
+            Element next = node.right;
+            while(next.left != null){
+                next = next.left;
+            }
+            node.key = next.key;
+            node.color = next.color;
+            node = next;
+        }
+
+        Element child = null;
+        if(node.left != null){
+            child = node.left;
+        }
+        else{
+            child = node.right;
+        }
+
+        if(node.parent == null){
+            tree = child;
+        }
+        if(node.parent.left == node){
+            node.parent.left = child;
+        }
+        else{
+            node.parent.right = child;
+        }
+
     }
 
-    public static void transplant(Element root, Element oldChild, Element newChild) {
-        if (oldChild.parent == null) {
-            root = newChild;
-        }
-        if (oldChild.parent.left == oldChild) {
-            oldChild.parent.left = newChild;
-        } else {
-            oldChild.parent.right = newChild;
-        }
-        if (newChild != null) {
-            newChild.parent = oldChild.parent;
-        }
-    }
 
     public static void main(String[] args) {
-        Element tree = getATree();
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.tree = getATree();
+        Element tree = binaryTree.tree;
         inorderTreeWalk(tree);
         System.out.println();
         Element element = treeSearch(tree, 5);
@@ -150,11 +161,11 @@ public class BinaryTree {
         Element predecessor = predecessor(tree, 6);
         System.out.println("predecessor element is " + predecessor.key);
 
-        insert(tree, new Element(10));
+        binaryTree.insert(new Element(10));
         inorderTreeWalk(tree);
         System.out.println();
 
-        delete(tree, 7);
+        binaryTree.delete(7);
         inorderTreeWalk(tree);
         System.out.println();
     }

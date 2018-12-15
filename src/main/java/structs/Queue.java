@@ -45,5 +45,4 @@ public class Queue {
             throw new RuntimeException("queue is empty");
         }
     }
-
 }

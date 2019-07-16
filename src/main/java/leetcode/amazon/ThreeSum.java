@@ -54,7 +54,7 @@ public class ThreeSum {
     }
 @Test
     public void test(){
-        int[] data = new int[]{1,-1,-1,0};
+        int[] data = new int[]{-1, 0, 1, 2, -1, -4};
         System.out.print(threeSum(data));
 }
 }
